@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+body {
+  background: url('https://subtlepatterns.com/patterns/noise_lines.png');
+  font-family: 'Pacifico', cursive;
+  overflow: hidden;
+  color: #fff;
+  margin: 0;
+  height: 100vh;
+}
+
+.bgoverlay {
+  background: rgba(249, 54, 168, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 120px;
+}
+
+.container {
+  position: relative;
+  width: 320px;
+  text-align: center;
+}
+
+.ico {
+  display: block;
+  width: 320px;
+  height: 320px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ico .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease, top 0.3s ease;
+  z-index: 4;
+}
+
+.open .ico {
+  animation: open 4s forwards;
+  transform-origin: center;
+}
+
+.open .ico .title {
+  opacity: 0;
+  top: -100px;
+  pointer-events: none;
+}
+
+.ico::before,
+.ico::after,
+.ico2::before,
+.ico2::after {
+  content: '\f004';
+  font-family: FontAwesome;
+  font-size: 20em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico::before {
+  color: #ff4081;
+  z-index: 3;
+}
+
+.ico::after {
+  color: #ff4081;
+  animation: explode 4s infinite;
+}
+
+.ico2::before,
+.ico2::after {
+  color: #e91e63;
+}
+
+.ico2::before {
+  animation: explodeSmall 3s infinite;
+}
+
+.ico2::after {
+  animation: explodeSmall 2s infinite;
+}
+
+.endtext {
+  position: absolute;
+  top: -100px;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease, top 0.5s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.open .endtext {
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+  animation: show 5s forwards;
+}
+
+.endtext .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.endtext h1,
+.endtext h2,
+.endtext h3 {
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  margin: 0.2em 0;
+  font-weight: normal;
+  user-select: text;
+}
+
+.endtext h1 {
+  font-size: 50px;
+}
+
+.endtext h2 {
+  font-size: 30px;
+}
+
+.endtext h3 {
+  font-size: 20px;
+}
+
+@keyframes explode {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes explodeSmall {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes open {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(10);
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    top: -100px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
